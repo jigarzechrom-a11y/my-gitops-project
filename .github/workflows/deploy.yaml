@@ -22,10 +22,10 @@ jobs:
 
       - name: Update K8s Manifest
         run: |
-         sed -i "s|image:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/nginx-app:${{ github.sha }}|g" k8s/deployment.yaml
+          sed -i "s|image:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/nginx-app:${{ github.sha }}|g" k8s/deployment.yaml
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add k8s/deployment.yaml
           git commit -m "Update image to ${{ github.sha }} [skip ci]"
-          # Yahan hum aapka Secret wala PAT use karenge push ke liye
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          # Ab ye wala secret use hoga
+          git push https://x-access-token:${{ secrets.MY_GITHUB_PAT }}@github.com/${{ github.repository }}.git HEAD:main
