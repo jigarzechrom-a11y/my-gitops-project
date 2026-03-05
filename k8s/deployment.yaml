@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: jigarzechrom/nginx-app:latest
+        image: jigarzechrom/nginx-app:cb70dcd7afcd788eaf92eb4528d5db90b2cb7d37
         ports:
         - containerPort: 80
