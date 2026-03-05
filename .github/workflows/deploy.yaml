@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
 
-# Ye permissions block 403 error ko rokne ke liye hai
+
 permissions:
   contents: write
 
