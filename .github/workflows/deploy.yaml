@@ -1,7 +1,13 @@
 name: CI/CD Pipeline
+
 on:
   push:
     branches: [ "main" ]
+
+# Ye permissions block 403 error ko rokne ke liye hai
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -27,5 +33,5 @@ jobs:
           git config --global user.name "GitHub Action"
           git add k8s/deployment.yaml
           git commit -m "Update image to ${{ github.sha }} [skip ci]"
-          # Ye niche wali line dhyan se copy karein, isme MY_GITHUB_PAT use ho raha hai
+          # Agar permission block fail hota hai, toh ye PAT wala method kaam karega
           git push https://x-access-token:${{ secrets.MY_GITHUB_PAT }}@github.com/${{ github.repository }}.git HEAD:main
