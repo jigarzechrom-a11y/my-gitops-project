@@ -27,5 +27,5 @@ jobs:
           git config --global user.name "GitHub Action"
           git add k8s/deployment.yaml
           git commit -m "Update image to ${{ github.sha }} [skip ci]"
-          # Ab ye wala secret use hoga
+          # Ye niche wali line dhyan se copy karein, isme MY_GITHUB_PAT use ho raha hai
           git push https://x-access-token:${{ secrets.MY_GITHUB_PAT }}@github.com/${{ github.repository }}.git HEAD:main
